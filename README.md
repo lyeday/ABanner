@@ -1,6 +1,8 @@
 # ABanner
 ABanner 是一个安卓的轮播图，支持画廊效果，支持自定义各种效果，支持自定义指示器
 
+[ ![Download](https://api.bintray.com/packages/zhichengwu/ABanner/ABanner/images/download.svg) ](https://bintray.com/zhichengwu/ABanner/ABanner/_latestVersion)
+
 # 效果图
 
 ![效果图](image.png)
