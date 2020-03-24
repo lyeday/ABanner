@@ -13,6 +13,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.zhicheng.androidbanner.utils.ASize;
@@ -65,7 +66,7 @@ public abstract class ShapeBannerIndicator extends BaseBannerIndicator {
     }
 
     @Override
-    public void updateIndicatorItemView(View view, boolean selected) {
+    public void updateIndicatorItemView(@NonNull View view, boolean selected) {
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if (selected){
             params.width = mSelectSize.getWidth();
@@ -77,19 +78,6 @@ public abstract class ShapeBannerIndicator extends BaseBannerIndicator {
             view.setBackground(getDrawable(mNormalColor));
         }
         view.setLayoutParams(params);
-    }
-
-    protected void updateAnimationView(){
-        RelativeLayout.LayoutParams params = (LayoutParams) mAnimationView.getLayoutParams();
-        if (params == null){
-            params = new RelativeLayout.LayoutParams(mSelectSize.getWidth(), mSelectSize.getHeight());
-        }else{
-            params.width = mSelectSize.getWidth();
-            params.height = mSelectSize.getHeight();
-        }
-        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT,RelativeLayout.TRUE);
-        mAnimationView.setLayoutParams(params);
-        mAnimationView.setBackground(getDrawable(mSelectColor));
     }
 
     public abstract Drawable getDrawable(int color);

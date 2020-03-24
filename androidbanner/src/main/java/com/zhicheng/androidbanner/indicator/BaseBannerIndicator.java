@@ -14,6 +14,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.NonNull;
+
 import com.zhicheng.androidbanner.utils.ASize;
 import com.zhicheng.androidbanner.utils.DisplayUtils;
 
@@ -51,7 +53,6 @@ public abstract class BaseBannerIndicator extends RelativeLayout {
 
     public BaseBannerIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
         mContext = context;
         initParams();
         initViews();
@@ -162,7 +163,7 @@ public abstract class BaseBannerIndicator extends RelativeLayout {
         int px = DisplayUtils.dip2px(mContext, 4);
         mMargin = new Rect(px,px,px,px);
     }
-    public abstract void updateIndicatorItemView(View view,boolean selected);
+    public abstract void updateIndicatorItemView(@NonNull View view, boolean selected);
     public abstract View getIndicatorItemView(boolean selected);
     public void setAnimationDuration(int mAnimationDuration) {
         this.mAnimationDuration = mAnimationDuration;

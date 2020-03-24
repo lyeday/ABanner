@@ -11,7 +11,8 @@ ABanner 是一个安卓的轮播图，支持画廊效果，支持自定义各种
  - 无限轮播
  - 经典效果
  - 画廊效果
- - 多种指示器（圆角矩形，矩形，圆点，图片等模式）配置
+ - View 复用机制
+ - 多种指示器（圆角矩形，矩形，圆点，图片等）
  - 形状指示器支持设置选中与未选择颜色
  - 自定义效果
  - 自定义指示器
@@ -42,7 +43,7 @@ dependencies {
 		implementation fileTree(dir: 'libs', include: ['*.jar'])
 	    ...
 	    //添加以下代码
-		implementation 'com.zhicheng:ABanner:0.0.3'
+		implementation 'com.zhicheng:ABanner:latestVersion'
 	}
 ````
 
@@ -56,20 +57,40 @@ dependencies {
 
 ````
 
-4、在代码中对`Abanner`样式等进行设置
+4、设置数据适配器
+
+````
+	aABanner.setAdapter(aBaseABannerAdapter);
+````
+
+该适配器继承于 BaseABannerAdapter ,并重写下列方法：
+
+````
+//返回视图
+public abstract View getView(int position, int viewType, View reusedView, ViewGroup parent);
+public abstract int getCount(); //返回总个数
+````
+
+- 如有必要可以重写以下方法:
+
+````
+public int getViewType(int position); //返回一个视图类型，默认为0
+````
+
+5、在代码中对`Abanner`样式等进行设置
 
 ````
 	mBanner.setBannerTransformerType(ABanner.BannerType.GALLERY) //设置类型
                 .setAdapter(new BannerAdapter(true)) //设置 adapter
                 .setBannerTransformerDuration(1000) //设置滚动动画时间
                 .setBannerTrannerScale(0.8f) // 设置画廊模式的缩放
-                .setIndicatorType(ABanner.IndicatorType.CUSTOM_IMAGE) //设置指示器类型
+                .setIndicatorType(ABanner.IndicatorType.ROUND_RECTANGLE) //设置指示器类型（圆角矩形）
                 .setIndicatorPosition(ABanner.IndicatorPosition.CENTER_BOTTOM,new Rect(80,50,80,20)) //设置指示器位置，并设置margin值
                 .startLoop(3000);
 	
 ````
 
-5、设置指示器
+6、设置指示器
 
 ````
 	//获取到指示器后，根据类型强转，然后进行个性化设置
@@ -92,14 +113,14 @@ dependencies {
 请自定义一个继承`BaseBannerIndicator`的类， 并且实现以下方法
 
 ````
-	//当每一个item需要更新的时候调用，selected `true`表示为选中状态的视图
+	//当item需要更新的时候调用，selected `true`表示为选中状态的视图
 	public abstract void updateIndicatorItemView(View view,boolean selected);
 	//表示获取一个item的视图
 	public abstract View getIndicatorItemView(boolean selected);
 
 ````
 
-然后调用一下方法
+然后调用以下方法：
 
 ````
 	aABanner.setCustomIndicator(aBaseBannerIndicator);
@@ -108,7 +129,7 @@ dependencies {
 
 - 自定义滚动动画
 
-请自定义一个类继承自`BaseBannerTransformer`并重写其中的方法，然后调用一下方法
+请自定义一个类继承自`BaseBannerTransformer`并重写其中的方法，然后调用以下方法：
 
 ````
 	aABanner.setCustomTransformer(aBaseBannerTransformer);

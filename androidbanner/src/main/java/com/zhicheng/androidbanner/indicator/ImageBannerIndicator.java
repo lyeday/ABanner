@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+
 import com.zhicheng.androidbanner.R;
 
 /**
@@ -45,7 +47,7 @@ public class ImageBannerIndicator extends BaseBannerIndicator {
     }
 
     @Override
-    public void updateIndicatorItemView(View view, boolean selected) {
+    public void updateIndicatorItemView(@NonNull View view, boolean selected) {
         ImageView imageView = (ImageView) view;
         if (selected){
             imageView.setImageDrawable(mSelectDrawable);
