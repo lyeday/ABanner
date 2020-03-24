@@ -6,7 +6,7 @@ publish {
     repoName = 'ABanner'//要传到的maven的名字。你可能有多个maven，要传哪个写哪个。
     groupId = 'com.zhicheng'//jcenter上的路径
     artifactId = 'ABanner'//项目名称
-    publishVersion = '0.0.3'//版本号
+    publishVersion = '0.0.5'//版本号
     desc = 'ABanner 是一个安卓的轮播图，支持画廊效果，支持自定义各种效果，支持自定义指示器'//描述，不重要
     website = 'https://github.com/lyeday/ABanner'//网站，不重要；尽量模拟github上的地址
 }
