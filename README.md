@@ -1,6 +1,8 @@
 # ABanner
 ABanner 是一个安卓的轮播图，支持画廊效果，支持自定义各种效果，支持自定义指示器
 
+[ ![Download](https://api.bintray.com/packages/zhichengwu/ABanner/ABanner/images/download.svg) ](https://bintray.com/zhichengwu/ABanner/ABanner/_latestVersion)
+
 # 效果图
 
 ![效果图](image.png)
@@ -26,8 +28,8 @@ allprojects {
         jcenter()
         //添加以下代码
         maven {
-					https://dl.bintray.com/zhichengwu/ABanner
-				}
+		https://dl.bintray.com/zhichengwu/ABanner
+		}
     }
     ...
 		
@@ -40,14 +42,14 @@ dependencies {
 		implementation fileTree(dir: 'libs', include: ['*.jar'])
 	    ...
 	    //添加以下代码
-		implementation 'com.zhicheng:ABanner:0.0.2'
+		implementation 'com.zhicheng:ABanner:0.0.3'
 	}
 ````
 
 3、 在`xml`布局文件中使用`ABanner`控件
 
 ````
-	 <com.zhicheng.androidbanner.ABanner
+   <com.zhicheng.androidbanner.ABanner
         android:layout_width="match_parent"
         android:layout_height="220dp">
     </com.zhicheng.androidbanner.ABanner>
@@ -71,7 +73,7 @@ dependencies {
 
 ````
 	//获取到指示器后，根据类型强转，然后进行个性化设置
-   ShapeBannerIndicator bannerIndicator = (ShapeBannerIndicator) 	mBanner.getBannerIndicator();
+   ShapeBannerIndicator bannerIndicator = (ShapeBannerIndicator)mBanner.getBannerIndicator();
    bannerIndicator.setSelectColor(Color.RED); //设置选中颜色
    bannerIndicator.setNormalColor(Color.LTGRAY); //设置未选中颜色
    bannerIndicator.setNormalSize(new ASize(10,10)); //设置未选中大小
